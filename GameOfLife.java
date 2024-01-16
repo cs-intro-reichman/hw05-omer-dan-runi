@@ -11,7 +11,6 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		String fileName = args[0];
-		//String fileName = "square.dat";
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
 	    //// test1(fileName);
@@ -68,9 +67,9 @@ public class GameOfLife {
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows + 2][cols + 2];
 		String currentRow = "";
-		for (int i = 0; i < board[0].length; i++)
+		for (int i = 0; i < board.length; i++)
 		{
-			for (int j = 0; j < board[1].length; j++)
+			for (int j = 0; j < board[0].length; j++)
 			{
 				if (i == 0 
 					|| i == board[0].length - 1 
@@ -87,12 +86,12 @@ public class GameOfLife {
 						switch(currentRow.charAt(j))
 						{
 							case('.'):
-								board[i][j+1] = 0;
+								board[i][j + 1] = 0;
 								break;
 							
 							case('x'):
 							case('X'):
-								board[i][j+1] = 1;
+								board[i][j + 1] = 1;
 								break;
 						}
 					}
@@ -112,13 +111,13 @@ public class GameOfLife {
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
-		int[][] evolvedBoard = new int[board[0].length][board[1].length];
-		for (int i = 0; i < evolvedBoard[0].length; i++)
+		int[][] evolvedBoard = new int[board.length][board[0].length];
+		for (int i = 0; i < evolvedBoard.length; i++)
 		{
-			for (int j = 0; j < evolvedBoard[1].length; j++)
+			for (int j = 0; j < evolvedBoard[0].length; j++)
 			{
 				if (i == 0 
-					|| i == board[0].length - 1 
+					|| i == board.length - 1 
 					|| j == 0
 					|| j == board[1].length - 1)
 				{
@@ -194,9 +193,9 @@ public class GameOfLife {
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
 		//// Write your code here.
-		for (int i = 1; i < arr[0].length - 1; i++)
+		for (int i = 1; i < arr.length - 1; i++)
 		{
-			for (int j = 1; j < arr[1].length - 1; j++)
+			for (int j = 1; j < arr[0].length - 1; j++)
 			{
 				System.out.printf("%3s", arr[i][j]);
 			}
